@@ -9,7 +9,7 @@ domain: "https://data-lessons.github.io/library-shell"
 repo: "https://github.com/data-lessons/library-shell"
 
 # Root URL for lesson below domain.
-root: "/library-shell"
+root: "/library-bash"
 
 # Overall lesson title.
 title: "Shell Lessons for Libraries"
