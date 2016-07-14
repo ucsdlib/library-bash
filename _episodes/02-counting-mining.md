@@ -170,14 +170,26 @@ This runs the same query as before, but rather than print the
 results within the Unix shell it saves the results as `DATE_JA_a-wc.txt`. 
 By prefacing this with `results/` the shell is instructed to save the .txt 
 file to the `results` sub-directory. To check this, navigate to the `results` 
-subdirectory, hit enter, type `ls`, and hit enter again to see this file. 
-Type `head DATE_JA-a-wc.txt` to see the file contents in the shell (as it 
-is 10 lines or fewer in length, all the file contents will be shown here).
+subdirectory:  
+
+~~~
+cd results
+ls 
+~~ 
+{: .source}
+
+To see the file contents in the shell (as it 
+is 10 lines or fewer in length, all the file contents will be shown here): 
+
+~~~
+head DATE_JA-a-wc.txt
+~~~
+{: .source}
 
 ## Mining
 
 The Unix shell can do much more than count the words, characters, and lines within a file. 
-The `grep` command (meaning 'global regular expression print') is 
+The `grep` command (meaning **global regular expression print**) is 
 used to search across multiple files for specific strings of characters. 
 It is able to do so much faster than the graphical search interface 
 offered by most operating systems or office suites. And combined with the `>` 
@@ -187,21 +199,45 @@ multiple files and then export that data to a new file. The only limitations
 here are your imagination, the shape of your data, and - when working with 
 thousands or millions of files - the processing power at your disposal.
 
-To begin using `grep`, first navigate to the `derived_data` directory (`cd ..`). 
-Here type `grep 1999 *.tsv` and hit enter. This query looks across all files in 
-the directory that fit the given criteria (the .tsv files) for instances of the string, 
-or character cluster, '1999'. It then prints them within the shell.
+To begin using `grep`, first navigate to the `shell-data` directory (from results/ type `cd ..`). 
+
+Here type `grep 1999 *.tsv` and hit enter. 
+~~~
+grep 1999 *.tsv
+~~~
+{: .source}
+
+This query looks across all files in  the directory that fit the given criteria (the .tsv files) for instances of the string, or character cluster, '1999'. It then prints them within the shell.
 
 Press the up arrow once in order to cycle back to your most recent action. 
-Amend `grep 1999 *.tsv` to `grep -c 1999 *.tsv` and hit enter. The shell 
-now prints the number of times the string 1999 appeared in each `*.tsv file`. 
+Amend `grep 1999 *.tsv` to `grep -c 1999 *.tsv` and hit enter. 
+
+~~~
+grep -c 1999 *.tsv
+~~~
+{: .source}
+
+The shell now prints the number of times the string 1999 appeared in each `*.tsv file`. 
 If you look at the output from the previous command, this tends to be refer to the 
 date field for each journal article.
 
-Strings need not be numbers. `grep -c revolution *.tsv`, for example, counts 
+Strings need not be numbers. 
+
+~~~
+grep -c revolution *.tsv
+~~~ 
+
+Counts 
 the instances of the string `revolution` within the defined files and prints 
 those counts to the shell. Run this, observe the output, and then amend it 
-to `grep -ci revolution *.tsv`. This repeats the query, but prints a case 
+to: 
+
+~~~
+grep -ci revolution *.tsv
+~~~
+{: .source}
+
+This repeats the query, but prints a case 
 insensitive count (including instances of both `revolution` and `Revolution`). 
 Note how the count has increased nearly 30 fold for those journal article 
 titles that contain the keyword 'america'. As before, cycling back and 
@@ -236,9 +272,11 @@ the shell will print out each line containing the string:
 - frence
 - franch
 
-**Tip:** include the `-o` flag to print only the matching part 
+Include the `-o` flag to print only the matching part 
 of the lines e.g. `grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv` 
 (handy for isolating/checking results).
+{. :callout}
+
 
 ## Exercise
 
