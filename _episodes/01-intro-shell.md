@@ -371,6 +371,7 @@ That would have created a a new file with the title `gulliver.txt` while leaving
 ~~~
 cp 829-0.txt gulliver.txt
 ~~~
+{: .output}
 
 Now that you have seen and used several new commands, it's time for another trick. 
 Hit the up arrow twice on your keyboard. Notice that `mv 829-0.txt gulliver.txt` 

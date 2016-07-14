@@ -27,10 +27,10 @@ The Unix shell can be used to quickly generate counts from across files,
 something that is tricky to achieve using the graphical user interfaces of standard office suites.
 
 In the Unix shell, use the `cd` command to navigate to the directory 
-that contains our data: the `tabular` subdirectory of the `...libcarp-wk2-data` directory. 
+that contains our data: the `shell-data` subdirectory of the `libcarp-data-notes` directory. 
 
 ~~~
-cd data
+cd shell-data
 ~~~
 {: .source}
 
@@ -52,34 +52,41 @@ ls -lh
 
 The file in this directory is a zipped up version of the dataset `2014-01_JA.tsv` that contains journal article metadata.
 
-The subdirectory is named `derived_data`. It contains a single text file 
+The data directory contains a single text file 
 (to which we shall return) and four .tsv files derived from `2014-01_JA.tsv`. 
 Each of these four includes all data where a keyword such as `africa` or `america` 
 appears in the 'Title' field of `2014-01_JA.tsv`. The `derived_data` directory 
 also includes a subdirectory called `results`.
 
-*Note: TSV files are those in which within each row the units of data 
+TSV files are those in which within each row the units of data 
 (or cells) are separated by tabs. They are similar to CSV (comma separated value) 
 files were the values are separated by commas. The latter are more common
 but can cause problems with the kind of data we have, where commas can be 
 found within the cells (though with the right encoding this can be overcome). 
 Either way both can be read in simple text editors or in spreadsheet programs 
 such as Libre Office Calc or Microsoft Excel.*
+{: .callout}
 
-Before you begin working with these files, you should move into the directory 
-in which they are stored. Navigate to `...libcarp-wk2-data/tabular/derived_data` directory.
+Before you begin working with these files, make sure you are in the shell-data folder. 
+
+~~~
+pwd
+~~~
+{: .source}
 
 Now that you are here you can count the contents of the files.
 
-The Unix command for counting is `wc`. Type 
+The Unix command for counting is `wc`. Type and hit enter. The flag `-w` combined with `wc` instructs the computer to print a word count, and the name of the file that has been counted, into the shell.
 
 ~~~~
 wc -w 2014-01-31_JA-africa.tsv` 
 ~~~~
-{. source}
+{: .source}
 
-and hit enter. The flag `-w` combined with `wc` instructs the computer to print 
-a word count, and the name of the file that has been counted, into the shell.
+~~~
+511261 2014-01-31_JA-africa.tsv
+~~~
+{: .output}
 
 As was seen earlier today flags such as `-w` are an essential part of getting 
 the most out of the Unix shell as they give you better control over commands.
@@ -91,12 +98,14 @@ Type
 ~~~
 wc -l 2014-01-31_JA-africa.tsv
 ~~~
-{. source}
+{: .source}
 
+~~~
+13712 2014-01-31_JA-africa.tsv
+~~~
+{: .output}
 
-and hit enter. Combined with `wc` the flag `-l` 
-
-prints a line count and the name of the file that has been counted.
+and hit enter. Combined with `wc` the flag `-l` prints a line count and the name of the file that has been counted.
 
 Finally, type
 
@@ -104,6 +113,11 @@ Finally, type
 wc -c 2014-01-31_JA-africa.tsv 
 ~~~
 {: .source}
+
+~~~
+3773660 2014-01-31_JA-africa.tsv
+~~~
+{: .output}
 
 and hit enter. This uses  the flag `-c` in combination with the command `wc` to print a character 
 count for `2014-01-31_JA-africa.tsv` 
@@ -117,6 +131,19 @@ a collection of newspapers, the average line lengths used by poets.
 You can also use `wc` with a combination of wildcards and flags to build more complex queries.
 
 Can you guess what the line `wc -l 2014-01-31_JA-a*.tsv` will do? 
+
+~~~
+wc -l 2014-01-31_JA-a*.tsv
+~~~
+{: .source}
+
+~~~
+13712 2014-01-31_JA-africa.tsv
+27392 2014-01-31_JA-america.tsv
+41104 total
+~~~
+{: .output}
+
 Correct! This prints the line counts for `2014-01-31_JA-africa.tsv` 
 and `2014-01-31_JA-america.tsv`, offering a simple means of comparing 
 these two sets of research data. Of course, it may be faster if you 
@@ -131,9 +158,17 @@ print screen, or by copy and paste methods. Using the `>` redirect
 operator we saw earlier you can export our query results to a new file. 
 Type `wc -l 2014-01-31_JA-a*.tsv > results/DATE_JA-a-wc.txt` (or 
 something like that, the last bit after `results/` could be anything!) and 
-hit enter. This runs the same query as before, but rather than print the 
+hit enter. 
+
+~~~
+wc -l 2014-01-31_JA-a*.tsv > results/2016-07-19_JA-a-wc.txt
+~~~
+{: .source}
+
+
+This runs the same query as before, but rather than print the 
 results within the Unix shell it saves the results as `DATE_JA_a-wc.txt`. 
-By prefacing this with `results/` the shelll is instructed to save the .txt 
+By prefacing this with `results/` the shell is instructed to save the .txt 
 file to the `results` sub-directory. To check this, navigate to the `results` 
 subdirectory, hit enter, type `ls`, and hit enter again to see this file. 
 Type `head DATE_JA-a-wc.txt` to see the file contents in the shell (as it 
