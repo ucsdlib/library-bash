@@ -32,7 +32,7 @@ that contains our data: the `shell-data` subdirectory of the `libcarp-data-notes
 ~~~
 cd shell-data
 ~~~
-{: .source}
+{: .bash}
 
 
 Remember, if at any time you are not sure where you are in your directory structure, type `pwd` and hit enter.
@@ -202,6 +202,7 @@ thousands or millions of files - the processing power at your disposal.
 To begin using `grep`, first navigate to the `shell-data` directory (from results/ type `cd ..`). 
 
 Here type `grep 1999 *.tsv` and hit enter. 
+
 ~~~
 grep 1999 *.tsv
 ~~~
@@ -225,7 +226,8 @@ Strings need not be numbers.
 
 ~~~
 grep -c revolution *.tsv
-~~~ 
+~~~
+{: .source}
 
 Counts 
 the instances of the string `revolution` within the defined files and prints 
@@ -246,9 +248,22 @@ adding `> results/`, followed by a filename (ideally in .txt format), will save 
 So far we have counted strings in file and printed to the shell or to 
 file those counts. But the real power of `grep` comes in that you can 
 also use it to create subsets of tabulated data (or indeed any data) 
-from one or multiple files. Type `grep -i revolution *.tsv` and hit enter. 
+from one or multiple files. Type: 
+
+~~~
+grep -i revolution *.tsv
+~~~
+
+and hit enter. 
+
 This script looks in the defined files and prints any lines containing `revolution` 
-(without regard to case) to the shell. `grep -i revolution *.tsv > results/DATE_JAi-revolution.tsv` 
+(without regard to case) to the shell. 
+
+~~~
+grep -i revolution *.tsv > results/DATE_JAi-revolution.tsv
+~~~
+{: .source}
+
 saves it to file.
 
 However if we look at this file, it contains every instance of the 
@@ -256,7 +271,14 @@ string 'revolution' including as a single word and as part of other words
 such as 'revolutionary'. This perhaps isn't as useful as we thought... 
 Thankfully, the `-w` flag instructs `grep` to look for whole words only, 
 giving us greater precision in our search. 
-Type `grep -iw revolution *.tsv > results/DATE_JAiw-revolution.tsv` 
+
+Type:
+
+~~~
+grep -iw revolution *.tsv > results/DATE_JAiw-revolution.tsv
+~~~
+{: .source} 
+
 and hit enter. This script looks in both of the defined files and
 exports any lines containing the whole word `revolution` (without regard to case) 
 to the specified .tsv file. `wc -l *revolution` shows us the difference between them.
@@ -272,8 +294,7 @@ the shell will print out each line containing the string:
 - frence
 - franch
 
-Include the `-o` flag to print only the matching part 
-of the lines e.g. `grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv` 
+Include the `-o` flag to print only the matching part of the lines e.g. `grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv` 
 (handy for isolating/checking results).
 {. :callout}
 
