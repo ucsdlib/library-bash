@@ -342,9 +342,11 @@ grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv
 >the 'America' and 'Africa' tsv files in this directory. 
 >Print your results to the shell.
 >
->~~~
->grep hero 2014-01-31*`
->~~~
+>>## Solution
+>>~~~
+>>grep hero 2014-01-31*`
+>>~~~
+>>{: .bash}
 >{: .solution}
 {: .challenge}
 
@@ -353,36 +355,46 @@ grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv
 >the 'America' and 'Africa' tsv files in this directory. 
 >Print your results to the shell.
 >
->~~~
->grep -c hero 2014-01-31*
->~~~
+>># Solution
+>>~~~
+>>grep -c hero 2014-01-31*
+>>~~~
+>>{: .bash}
 >{: .solution}
 {: .challenge}
 
 >## Case insensitive search 
 >Count all case insensitive instances of that word in the 'America' and 'Africa' tsv files 
 >in this directory. Print your results to the shell.
->~~~
->grep -ci hero 2014-01-31*`
->~~~
+>
+>>##Solution
+>>~~~
+>>grep -ci hero 2014-01-31*`
+>>~~~
+>>{: .bash}
 >{: .solution}
 {: .challenge}
 
 >## Case insensitive search 2 
 >Search for all case insensitive instances of that 
 >word in the 'America' and 'Africa' tsv files in this directory. Print your results to a new >.tsv file. 
->~~~
->grep -i hero 2014-01-31* > new.tsv
->~~~
+>
+>> ## Solution
+>>~~~
+>>grep -i hero 2014-01-31* > new.tsv
+>>~~~
+>>{: .bash}
 >{: .solution}
 {: .challenge}
 
 >## Case insensitive search 3
 >Search for all case insensitive instances of that whole word 
 >in the 'America' and 'Africa' tsv files in this directory. Print your results to a new .tsv    >file.
->~~~
->grep -iw hero 2014-01-31* > new2.tsv
->~~~
+>> ## Solution
+>>~~~
+>>grep -iw hero 2014-01-31* > new2.tsv
+>>~~~
+>>{: .bash}
 >{: .solution}
 {: .challenge}
 
