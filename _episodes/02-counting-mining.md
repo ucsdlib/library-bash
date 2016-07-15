@@ -333,6 +333,7 @@ grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv
 >~~~
 >grep hero *.tsv`
 >~~~
+>{: .source}
 >{: .solution}
 {: .challenge}
 
