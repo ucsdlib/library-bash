@@ -329,11 +329,11 @@ grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv
 >a word you choose in all four derived tsv files in this directory. 
 >Print your results to the shell.
 >
->## Solution
->~~~
->grep hero *.tsv`
->~~~
->{: .source}
+>>## Solution
+>>~~~
+>>grep hero *.tsv`
+>>~~~
+>>{: .source}
 >{: .solution}
 {: .challenge}
 
