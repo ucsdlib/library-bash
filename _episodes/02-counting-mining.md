@@ -324,53 +324,73 @@ grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv
 ~~~
 {: .source}
 
-
-## Exercise
-
-With the person next to you, select a word to search for and use what you have learnt do to the following:
-
 >## Case sensitive search
 >Search for all case sensitive instances of 
->that word in all four derived tsv files in this directory. 
+>a word you choose in all four derived tsv files in this directory. 
 >Print your results to the shell.
 >
 >## Solution
 >~~~
 >grep hero *.tsv`
 >~~~
->{: .source}
+>{: .solution}
 {: .challenge}
 
-Search for all case sensitive instances of that word in 
-the 'America' and 'Africa' tsv files in this directory. 
-Print your results to the shell.
+> ## Case sensitive search 2
+>Search for all case sensitive instances of a word you choose in 
+>the 'America' and 'Africa' tsv files in this directory. 
+>Print your results to the shell.
+>
+>~~~
+>grep hero 2014-01-31*`
+>~~~
+>{: .solution}
+{: .challenge}
 
-- `grep hero 2014-01-31*`
+>## Case sensitive search 3
+>Count all case sensitive instances of a word you choose in 
+>the 'America' and 'Africa' tsv files in this directory. 
+>Print your results to the shell.
+>
+>~~~
+>grep -c hero 2014-01-31*
+>~~~
+>{: .solution}
+{: .challenge}
 
-Count all case sensitive instances of that word in 
-the 'America' and 'Africa' tsv files in this directory. 
-Print your results to the shell.
+>## Case insensitive search 
+>Count all case insensitive instances of that word in the 'America' and 'Africa' tsv files 
+>in this directory. Print your results to the shell.
+>~~~
+>grep -ci hero 2014-01-31*`
+>~~~
+>{: .solution}
+{: .challenge}
 
-- `grep -c hero 2014-01-31*`
+>## Case insensitive search 2 
+>Search for all case insensitive instances of that 
+>word in the 'America' and 'Africa' tsv files in this directory. Print your results to a new >.tsv file. 
+>~~~
+>grep -i hero 2014-01-31* > new.tsv
+>~~~
+>{: .solution}
+{: .challenge}
 
-Count all case insensitive instances of that word in the 'America' and 'Africa' tsv files 
-in this directory. Print your results to the shell.
-
-- `grep -ci hero 2014-01-31*`
-
-Search for all case insensitive instances of that 
-word in the 'America' and 'Africa' tsv files in this directory. Print your results to a new .tsv file. 
-
-- `grep -i hero 2014-01-31* > new.tsv`
-
-Search for all case insensitive instances of that whole word 
-in the 'America' and 'Africa' tsv files in this directory. Print your results to a new .tsv file.
-
-- `grep -iw hero 2014-01-31* > new2.tsv`
+>## Case insensitive search 3
+>Search for all case insensitive instances of that whole word 
+>in the 'America' and 'Africa' tsv files in this directory. Print your results to a new .tsv    >file.
+>~~~
+>grep -iw hero 2014-01-31* > new2.tsv
+>~~~
+>{: .solution}
+{: .challenge}
 
 Compare the line counts of the last two files.
 
-- `wc -l FILENAMES`
+~~~
+wc -l FILENAMES
+~~~
+{: .source}
 
 Open both files in a text editor (Notepad++, Atom, Kate, 
 whatever you prefer) or Excel-like program to see the difference 
