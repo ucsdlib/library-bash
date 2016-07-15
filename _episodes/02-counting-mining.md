@@ -175,7 +175,7 @@ subdirectory:
 ~~~
 cd results
 ls 
-~~ 
+~~~
 {: .source}
 
 To see the file contents in the shell (as it 
