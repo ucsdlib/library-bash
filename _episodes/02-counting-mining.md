@@ -334,6 +334,7 @@ With the person next to you, select a word to search for and use what you have l
 >that word in all four derived tsv files in this directory. 
 >Print your results to the shell.
 >
+>## Solution
 >~~~
 >grep hero *.tsv`
 >~~~
