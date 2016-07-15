@@ -329,6 +329,7 @@ grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv
 
 With the person next to you, select a word to search for and use what you have learnt do to the following:
 
+>## Case sensitive search
 >Search for all case sensitive instances of 
 >that word in all four derived tsv files in this directory. 
 >Print your results to the shell.
