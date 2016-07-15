@@ -386,13 +386,18 @@ looking for. The past command will autocomplete. Hit `enter` to run the command 
 or press the arrow keys to start editing the command. If you can't find what you're 
 looking for in the reverse lookup, use `Ctrl + c` to return to the prompt.
 
-
+> ## Duplicating a file
 >After having read and renamed several files, you may wish to bring their text 
 >together into one file. Before we do that, let's use `cp` to duplicate the Gulliver 
 >file and give it the filename `gulliver-backup.txt`: any ideas how you do that? 
+>
+>> ## Answer 
+>>~~~
+>>cp gulliver.txt gulliver-backup.txt
+>>~~~
+>>{: .bash}
+>{: .solution}
 {: .challenge}
-
-TODO: (**ANSWER**: `cp gulliver.txt gulliver-backup.txt`). 
 
 Good, now that you have two copies of *Gulliver's Travels*, 
 let's put them together to make an **even longer** book. 

@@ -34,29 +34,56 @@ I've left some of the figuring out to do to you - so please refer to your notes 
 
 *Work on this exercise with the person next to you*
 
-Head to `.../libcarp-wk2-data/text/`. 
+Head to:
+
+~~~
+cd ../text/
+~~~
+{: .source}
+
 We're going to work again with the `gulliver.txt` file we saw earlier.
 
-**SHOW THE FILE WITH `less -N gulliver.txt`**
+SHOW THE FILE:
 
-We're going to start by using the `sed` command. 
-The command allows you to edit files directly.
+~~~
+less -N gulliver.txt`**
+~~~
+{: .source}
 
-Type `sed '9352,9714d' gulliver.txt > gulliver-nofoot.txt` and hit enter.
+We're going to start by using the `sed` command. The command allows you to edit files directly.
+
+Type and run:
+
+~~~
+sed '9352,9714d' gulliver.txt > gulliver-nofoot.txt 
+~~~
+{: .source}
+
 
 The command `sed` in combination with the `d` 
 value will look at `gulliver.txt` and delete all 
 values between the rows specified. The `>` action then 
 prompts the script to this edited text to the new file specified.
 
-Now type `sed '1,37d' gulliver-nofoot.txt > gulliver-noheadfoot.txt` and hit enter. 
+Now type and run: 
+
+~~~
+sed '1,37d' gulliver-nofoot.txt > gulliver-noheadfoot.txt
+~~~
+{: .source}
+
 This does the same as before, but for the header.
 
 You now have a cleaner text. The next step is to 
 prepare it even further for rigorous analysis.
 
 We now use the `tr` command, used for translating or 
-deleting characters. Type `tr -d [:punct:] < gulliver-noheadfoot.txt > gulliver-noheadfootpunct.txt` and hit enter.
+deleting characters. Type and run:
+
+~~~
+tr -d [:punct:] < gulliver-noheadfoot.txt > gulliver-noheadfootpunct.txt
+~~~
+{: .source}
 
 This uses the translate command and a special syntax to remove all punctuation. 
 It also requires the use of both the output redirect `>` we have seen and the input redirect `<` we haven't seen. 
@@ -70,13 +97,23 @@ Open the `gulliver-clean.txt` in a text editor. Note how the text has been trans
 
 We are now ready to pull the text apart.
 
-Type `tr ' ' '\n' < gulliver-clean.txt > gulliver-linebyline.txt` and hit enter.
+Type and run: 
+
+~~~
+tr ' ' '\n' < gulliver-clean.txt > gulliver-linebyline.txt
+~~~
+{: .source}
 
 This uses the translate command again, this time to translate every blank 
 space into `\n` which renders as a new line. Every word in the file will now have its own line.
 
 This isn't much use, so to get a better sense of the data we need to use another 
-new command called `sort`. Type `sort gulliver-linebyline.txt > gulliver-ordered.txt` and hit enter.
+new command called `sort`.  
+
+~~~
+sort gulliver-linebyline.txt > gulliver-ordered.txt
+~~~
+{: .source}
 
 This script uses the `sort` command to rearrange the text from its 
 original order into an alphabetical configuration. Open the file in 
@@ -84,7 +121,11 @@ a text editor and after scrolling past some blank space you will
 begin to see some numbers and finally words, or at least lots of copies of 'a'!
 
 This is looking more useful, but we can go one step further. 
-Type `uniq -c gulliver-ordered.txt > gulliver-final.txt` and hit enter.
+
+~~~
+uniq -c gulliver-ordered.txt > gulliver-final.txt` and hit enter.
+~~~
+{: .source}
 
 This script uses `uniq`, another new command, in combination 
 with the `-c` flag to both remove duplicate lines and produce a word count of those duplicates.
@@ -94,7 +135,10 @@ about special characters**
 
 Note that these steps can be simplified by building 'pipes'. So...
 
-`tr ' ' '\n' < gulliver-clean.txt | sort | uniq -c > gulliver-final.txt`
+~~~
+tr ' ' '\n' < gulliver-clean.txt | sort | uniq -c > gulliver-final.txt
+~~~
+{: .source}
 
 ...would have done the line-by-line, sorting, and removal of duplicates in one go.
 
