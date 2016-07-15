@@ -253,6 +253,7 @@ from one or multiple files. Type:
 ~~~
 grep -i revolution *.tsv
 ~~~
+{: .source}
 
 and hit enter. 
 
@@ -281,33 +282,62 @@ grep -iw revolution *.tsv > results/DATE_JAiw-revolution.tsv
 
 and hit enter. This script looks in both of the defined files and
 exports any lines containing the whole word `revolution` (without regard to case) 
-to the specified .tsv file. `wc -l *revolution` shows us the difference between them.
+to the specified .tsv file. 
 
-Finally, you can use the regular expression syntax covered earlier to search for similar words. 
+~~~
+wc -l *revolution
+~~~
+{: .source}
+
+shows us the difference between them.
+
+Finally, you can use the **regular expression syntax** covered earlier to search for similar words. 
+
 In `gallic.txt` we have the string `fr[ae]nc[eh]`. 
+
+~~~
+cat gallic.txt
+~~~
+{: .source}
+
 The square brackets here ask the machine to match any character 
-in the range specified. So when used with grep as `grep -iw --file=gallic.txt *.tsv` 
+in the range specified. So when used with grep as
+~~~
+grep -iw --file=gallic.txt *.tsv
+~~~
+{: .source}
+
 the shell will print out each line containing the string:
 
+~~~
 - france
 - french
 - frence
 - franch
+~~~
+{: .output}
 
-Include the `-o` flag to print only the matching part of the lines e.g. `grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv` 
-(handy for isolating/checking results).
-{. :callout}
+Include the `-o` flag to print only the matching part of the lines e.g. (handy for isolating/checking results).
+
+~~~
+grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv
+~~~
+{: .source}
 
 
 ## Exercise
 
 With the person next to you, select a word to search for and use what you have learnt do to the following:
 
-Search for all case sensitive instances of 
-that word in all four derived tsv files in this directory. 
-Print your results to the shell.
-
-- `grep hero *.tsv`
+>Search for all case sensitive instances of 
+>that word in all four derived tsv files in this directory. 
+>Print your results to the shell.
+>
+>~~~
+>grep hero *.tsv`
+>~~~
+{: .source}
+{: .challenge}
 
 Search for all case sensitive instances of that word in 
 the 'America' and 'Africa' tsv files in this directory. 
