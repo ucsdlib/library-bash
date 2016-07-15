@@ -336,7 +336,7 @@ With the person next to you, select a word to search for and use what you have l
 >~~~
 >grep hero *.tsv`
 >~~~
-{: .source}
+>{: .source}
 {: .challenge}
 
 Search for all case sensitive instances of that word in 
