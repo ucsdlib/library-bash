@@ -39,7 +39,7 @@ The British Library has open data on journal articles, and I've prepared from th
 ~~~
 wc -l 2014-01_JA.tsv
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 507732 2014-01_JA.tsv
@@ -52,7 +52,7 @@ but the shell won't. Let's look at this shell command:
 ~~~
 grep 2009 2014-01_JA.tsv | grep INTERNATIONAL | awk -F'\t' '{print $5}' | sort | uniq -c`
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 40 AFRICA -LONDON- INTERNATIONAL AFRICAN INSTITUTE-
@@ -124,7 +124,7 @@ Try typing `pwd` and hitting enter.
 ~~~
 pwd
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 /Users/riley
@@ -137,7 +137,7 @@ Type `ls` and you will see a list of every file and directory within your curren
 ~~~
 ls
 ~~~
-{: .source}
+{: .bash}
 
 ~~~ 
 Applications Documents    Library      Music        Public
@@ -157,7 +157,7 @@ the size of the files in bytes, the date it was created or last modified, and th
 ~~~
 ls -l
 ~~~~
-{: .source}
+{: .bash}
 
 ~~~
 total 0
@@ -186,7 +186,7 @@ enter you receive an output in a human-readable format (note: that the order her
 ~~~
 ls -lh
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 
@@ -215,7 +215,7 @@ To double check, type `pwd` and you should see something that represents your de
 ~~~
 cd desktop
 ~~~
-{: .source}
+{: .bash}
 
 
 You'll note that this only takes you 'down' through your directory structure 
@@ -245,7 +245,7 @@ And as you become more comfortable, you'll soon find yourself skipping directly 
 ~~~
 man ls
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 
@@ -660,7 +660,7 @@ data provided in advance.
 ~~~
 pwd
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 
@@ -676,7 +676,7 @@ Now type `mkdir firstdir` and hit enter. This used the `mkdir` command (meaning 
 mkdir firstdir
 cd firstdir
 ~~~
-{: .source}
+{: .bash}
 
 But wait! There's a trick to make things a bit quicker. Go up one directory (`cd ..`). 
 To navigate to the `firstdir` directory you could type `cd firstdir`. 
@@ -699,7 +699,7 @@ Navigate to the `shell-data` directory in the pre-circulated data directory.
 ~~~
 cd shell-data
 ~~~
-{: .source}
+{: .bash}
 
 In here there is a copy of Jonathan Swift's *Gulliver's Travels* downloaded from 
 Project Gutenberg. type `ls -lh` and hit enter to see details of this file.
@@ -707,7 +707,7 @@ Project Gutenberg. type `ls -lh` and hit enter to see details of this file.
 ~~~
 ls -lh
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 total 92040
@@ -727,7 +727,7 @@ You can read the text right here. To try this, type `cat 829-0.txt`.
 ~~~
 cat 820-0.txt
 ~~~
-{: .source}
+{: .bash}
 
 
 The terminal window erupts and *Gulliver's Travels* cascades by: this is what is known as printing to the shell. 
@@ -736,14 +736,14 @@ Instead, you may want to just look at the first or the last bit of the file.
 
 >Canceling Commands
 >To cancel this print of `829-0.txt`, or indeed any ongoing in the Unix shell, hit `ctrl+c`**
-{: .source}
+{: .bash}
 
 Type `head 829-0.txt` and hit enter. 
 
 ~~~
 head 829-0.txt
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 The Project Gutenberg eBook, Gulliver's Travels, by Jonathan Swift
@@ -760,10 +760,11 @@ with this eBook or online at www.gutenberg.org
 This provides a view of the first ten lines,
 whereas `tail 829-0.txt` provides a perspective on the last ten lines. 
 This is a good way to quickly determine the contents of the file.
+
 ~~~
 tail 829-0.txt
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 TODO output
@@ -787,14 +788,14 @@ To do this type `mv 829-0.txt gulliver.txt` and hit enter. This is equivalent to
 ~~~
 mv 829-0.txt gulliver.txt
 ~~~
-{: .source}
+{: .bash}
 
 Afterwards, when you perform a `ls` command, you will see that it is now `gulliver.txt`.
 
 ~~~
 ls 
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 2014-01-31_JA-africa.tsv    2014-02-01_JA-art .tsv      gulliver.txt
@@ -849,7 +850,7 @@ again.
 ~~~
 cat gulliver.txt gulliver-backup.txt
 ~~~
-{: .source}
+{: .bash}
 
 This prints, or displays, the combined files within the shell. 
 However, it is too long to read on this window! 
@@ -861,14 +862,14 @@ Hit up arrow to get to your last command and amend the line to:
 ~~~
 cat gulliver.txt gulliver-backup.txt > gulliver-twice.txt
 ~~~
-{: .source}
+{: .bash}
 
 and hit enter. Now, when you type `ls` you'll see `gulliver-twice.txt` appear in your directory.
 
 ~~~
 ls
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 2014-01-31_JA-africa.tsv    2014-02-01_JA-art .tsv      gulliver-backup.txt
@@ -886,7 +887,7 @@ So, if you type:
 ~~~
 cat *.txt > everything-together.txt
 ~~~
-{: .source}
+{: .bash}
 
 and hit enter, a combination of all the `.txt` files in the current directory 
 are combined in alphabetical order as `everything-together.txt`. 
@@ -912,7 +913,7 @@ for example:
 ~~~
 rm gulliver.txt
 ~~~
-{: .source}
+{: .bash}
  
 adding wildcards as appropriate to specify the files to delete.
 
