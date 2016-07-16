@@ -39,7 +39,7 @@ Head to:
 ~~~
 cd ../text/
 ~~~
-{: .source}
+{: .bash}
 
 We're going to work again with the `gulliver.txt` file we saw earlier.
 
@@ -48,7 +48,7 @@ SHOW THE FILE:
 ~~~
 less -N gulliver.txt`**
 ~~~
-{: .source}
+{: .bash}
 
 We're going to start by using the `sed` command. The command allows you to edit files directly.
 
@@ -57,7 +57,7 @@ Type and run:
 ~~~
 sed '9352,9714d' gulliver.txt > gulliver-nofoot.txt 
 ~~~
-{: .source}
+{: .bash}
 
 
 The command `sed` in combination with the `d` 
@@ -70,7 +70,7 @@ Now type and run:
 ~~~
 sed '1,37d' gulliver-nofoot.txt > gulliver-noheadfoot.txt
 ~~~
-{: .source}
+{: .bash}
 
 This does the same as before, but for the header.
 
@@ -83,7 +83,7 @@ deleting characters. Type and run:
 ~~~
 tr -d [:punct:] < gulliver-noheadfoot.txt > gulliver-noheadfootpunct.txt
 ~~~
-{: .source}
+{: .bash}
 
 This uses the translate command and a special syntax to remove all punctuation. 
 It also requires the use of both the output redirect `>` we have seen and the input redirect `<` we haven't seen. 
@@ -102,7 +102,7 @@ Type and run:
 ~~~
 tr ' ' '\n' < gulliver-clean.txt > gulliver-linebyline.txt
 ~~~
-{: .source}
+{: .bash}
 
 This uses the translate command again, this time to translate every blank 
 space into `\n` which renders as a new line. Every word in the file will now have its own line.
@@ -113,7 +113,7 @@ new command called `sort`.
 ~~~
 sort gulliver-linebyline.txt > gulliver-ordered.txt
 ~~~
-{: .source}
+{: .bash}
 
 This script uses the `sort` command to rearrange the text from its 
 original order into an alphabetical configuration. Open the file in 
@@ -123,9 +123,9 @@ begin to see some numbers and finally words, or at least lots of copies of 'a'!
 This is looking more useful, but we can go one step further. 
 
 ~~~
-uniq -c gulliver-ordered.txt > gulliver-final.txt` and hit enter.
+uniq -c gulliver-ordered.txt > gulliver-final.txt
 ~~~
-{: .source}
+{: .bash}
 
 This script uses `uniq`, another new command, in combination 
 with the `-c` flag to both remove duplicate lines and produce a word count of those duplicates.
@@ -138,7 +138,7 @@ Note that these steps can be simplified by building 'pipes'. So...
 ~~~
 tr ' ' '\n' < gulliver-clean.txt | sort | uniq -c > gulliver-final.txt
 ~~~
-{: .source}
+{: .bash}
 
 ...would have done the line-by-line, sorting, and removal of duplicates in one go.
 
@@ -157,7 +157,10 @@ And all this using a few commands on an otherwise unassuming but very powerful c
 
 Before we move on, we'll go back to the opening command:
 
-`grep 2009 2014-01_JA.tsv | grep INTERNATIONAL | awk -F'\t' '{print $5}' | sort | uniq -c`
+~~~
+grep 2009 2014-01_JA.tsv | grep INTERNATIONAL | awk -F'\t' '{print $5}' | sort | uniq -c`
+~~~
+{: .bash}
 
 Can you describe - without looking at your notes... - exactly what is going on here? 
 (I'll forgive you not know the `awk` bit given that we've not covered that...)

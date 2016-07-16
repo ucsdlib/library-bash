@@ -40,7 +40,7 @@ Remember, if at any time you are not sure where you are in your directory struct
 ~~~
 pwd
 ~~~
-{: .source}
+{: .bash}
 
 
 Type `ls -lh` and then hit enter. This prints, or displays, a list that includes a file and a subdirectory.
@@ -48,7 +48,7 @@ Type `ls -lh` and then hit enter. This prints, or displays, a list that includes
 ~~~
 ls -lh
 ~~~
-{: .source}
+{: .bash}
 
 The file in this directory is a zipped up version of the dataset `2014-01_JA.tsv` that contains journal article metadata.
 
@@ -58,13 +58,14 @@ Each of these four includes all data where a keyword such as `africa` or `americ
 appears in the 'Title' field of `2014-01_JA.tsv`. The `derived_data` directory 
 also includes a subdirectory called `results`.
 
-TSV files are those in which within each row the units of data 
-(or cells) are separated by tabs. They are similar to CSV (comma separated value) 
-files were the values are separated by commas. The latter are more common
-but can cause problems with the kind of data we have, where commas can be 
-found within the cells (though with the right encoding this can be overcome). 
-Either way both can be read in simple text editors or in spreadsheet programs 
-such as Libre Office Calc or Microsoft Excel.*
+> ## TSV Files
+>TSV files are those in which within each row the units of data 
+>(or cells) are separated by tabs. They are similar to CSV (comma separated value) 
+>files were the values are separated by commas. The latter are more common
+>but can cause problems with the kind of data we have, where commas can be 
+>found within the cells (though with the right encoding this can be overcome). 
+>Either way both can be read in simple text editors or in spreadsheet programs 
+>such as Libre Office Calc or Microsoft Excel.*
 {: .callout}
 
 Before you begin working with these files, make sure you are in the shell-data folder. 
@@ -72,16 +73,16 @@ Before you begin working with these files, make sure you are in the shell-data f
 ~~~
 pwd
 ~~~
-{: .source}
+{: .bash}
 
 Now that you are here you can count the contents of the files.
 
 The Unix command for counting is `wc`. Type and hit enter. The flag `-w` combined with `wc` instructs the computer to print a word count, and the name of the file that has been counted, into the shell.
 
 ~~~~
-wc -w 2014-01-31_JA-africa.tsv` 
+wc -w 2014-01-31_JA-africa.tsv 
 ~~~~
-{: .source}
+{: .bash}
 
 ~~~
 511261 2014-01-31_JA-africa.tsv
@@ -98,7 +99,7 @@ Type
 ~~~
 wc -l 2014-01-31_JA-africa.tsv
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 13712 2014-01-31_JA-africa.tsv
@@ -112,7 +113,7 @@ Finally, type
 ~~~
 wc -c 2014-01-31_JA-africa.tsv 
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 3773660 2014-01-31_JA-africa.tsv
@@ -135,7 +136,7 @@ Can you guess what the line `wc -l 2014-01-31_JA-a*.tsv` will do?
 ~~~
 wc -l 2014-01-31_JA-a*.tsv
 ~~~
-{: .source}
+{: .bash}
 
 ~~~
 13712 2014-01-31_JA-africa.tsv
@@ -163,7 +164,7 @@ hit enter.
 ~~~
 wc -l 2014-01-31_JA-a*.tsv > results/2016-07-19_JA-a-wc.txt
 ~~~
-{: .source}
+{: .bash}
 
 
 This runs the same query as before, but rather than print the 
@@ -176,7 +177,7 @@ subdirectory:
 cd results
 ls 
 ~~~
-{: .source}
+{: .bash}
 
 To see the file contents in the shell (as it 
 is 10 lines or fewer in length, all the file contents will be shown here): 
@@ -184,7 +185,7 @@ is 10 lines or fewer in length, all the file contents will be shown here):
 ~~~
 head DATE_JA-a-wc.txt
 ~~~
-{: .source}
+{: .bash}
 
 ## Mining
 
@@ -206,7 +207,7 @@ Here type `grep 1999 *.tsv` and hit enter.
 ~~~
 grep 1999 *.tsv
 ~~~
-{: .source}
+{: .bash}
 
 This query looks across all files in  the directory that fit the given criteria (the .tsv files) for instances of the string, or character cluster, '1999'. It then prints them within the shell.
 
@@ -216,7 +217,7 @@ Amend `grep 1999 *.tsv` to `grep -c 1999 *.tsv` and hit enter.
 ~~~
 grep -c 1999 *.tsv
 ~~~
-{: .source}
+{: .bash}
 
 The shell now prints the number of times the string 1999 appeared in each `*.tsv file`. 
 If you look at the output from the previous command, this tends to be refer to the 
@@ -227,7 +228,7 @@ Strings need not be numbers.
 ~~~
 grep -c revolution *.tsv
 ~~~
-{: .source}
+{: .bash}
 
 Counts 
 the instances of the string `revolution` within the defined files and prints 
@@ -237,7 +238,7 @@ to:
 ~~~
 grep -ci revolution *.tsv
 ~~~
-{: .source}
+{: .bash}
 
 This repeats the query, but prints a case 
 insensitive count (including instances of both `revolution` and `Revolution`). 
@@ -253,7 +254,7 @@ from one or multiple files. Type:
 ~~~
 grep -i revolution *.tsv
 ~~~
-{: .source}
+{: .bash}
 
 and hit enter. 
 
@@ -263,7 +264,7 @@ This script looks in the defined files and prints any lines containing `revoluti
 ~~~
 grep -i revolution *.tsv > results/DATE_JAi-revolution.tsv
 ~~~
-{: .source}
+{: .bash}
 
 saves it to file.
 
@@ -278,7 +279,7 @@ Type:
 ~~~
 grep -iw revolution *.tsv > results/DATE_JAiw-revolution.tsv
 ~~~
-{: .source} 
+{: .bash} 
 
 and hit enter. This script looks in both of the defined files and
 exports any lines containing the whole word `revolution` (without regard to case) 
@@ -287,7 +288,7 @@ to the specified .tsv file.
 ~~~
 wc -l *revolution
 ~~~
-{: .source}
+{: .bash}
 
 shows us the difference between them.
 
@@ -298,14 +299,14 @@ In `gallic.txt` we have the string `fr[ae]nc[eh]`.
 ~~~
 cat gallic.txt
 ~~~
-{: .source}
+{: .bash}
 
 The square brackets here ask the machine to match any character 
 in the range specified. So when used with grep as
 ~~~
 grep -iw --file=gallic.txt *.tsv
 ~~~
-{: .source}
+{: .bash}
 
 the shell will print out each line containing the string:
 
@@ -322,7 +323,7 @@ Include the `-o` flag to print only the matching part of the lines e.g. (handy f
 ~~~
 grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv
 ~~~
-{: .source}
+{: .bash}
 
 >## Case sensitive search
 >Search for all case sensitive instances of 
@@ -333,7 +334,7 @@ grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv
 >>~~~
 >>grep hero *.tsv`
 >>~~~
->>{: .source}
+>>{: .bash}
 >{: .solution}
 {: .challenge}
 
@@ -403,7 +404,7 @@ Compare the line counts of the last two files.
 ~~~
 wc -l FILENAMES
 ~~~
-{: .source}
+{: .bash}
 
 Open both files in a text editor (Notepad++, Atom, Kate, 
 whatever you prefer) or Excel-like program to see the difference 
