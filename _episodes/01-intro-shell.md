@@ -127,7 +127,7 @@ pwd
 {: .source}
 
 ~~~
-/Users/jtdennis
+/Users/riley
 ~~~~
 {: .output}
 
@@ -160,7 +160,7 @@ ls -l
 {: .source}
 
 ~~~
-need from user
+
 ~~~
 {: .output}
 
@@ -181,9 +181,10 @@ ls -h
 {: .source}
 
 ~~~
-add user
+
 ~~~
 {: .output}
+~~~
 
 You've now spent a great deal of time in your home directory. 
 Let's go somewhere else. You can do that through the `cd` or Change Directory command. 
@@ -204,7 +205,8 @@ This moves us 'up' one directory, putting us back where we started.
 If you ever get completely lost, the command `cd --` (or `cd ~` or even just `cd`) will bring 
 you right back to the home directory, right where you started.
 
-**Tip:** To switch back and forth between two directories use `cd -`.
+To switch back and forth between two directories use `cd -`.
+{: .callout}
 
 Try exploring: move around the computer, get used to moving in and out of directories, 
 see how different file types appear in the Unix shell. 
@@ -212,16 +214,22 @@ see how different file types appear in the Unix shell.
 Being able to navigate your file system using the bash shell is very important for using the Unix shell effectively. 
 And as you become more comfortable, you'll soon find yourself skipping directly to the directory that you want.
 
-**TIP:** Use the `man` command to invoke the manual page (documentation) for a Shell command. 
+Use the `man` command to invoke the manual page (documentation) for a Shell command. 
 For example, `man ls` displays all the flags/options available to you - which saves 
 you remembering them all! Try this for each command you've learned so far. 
 Use the `spacebar` to navigate the manual pages, and `q` to quit. 
 *Note:* this command is for Mac and Linux users only. It may not work for Windows users.
+{: .callout}
 
 ~~~
 man ls
 ~~~
 {: .source}
+
+~~~
+
+~~~
+{: .output}
 
 ### Summary
 
@@ -250,6 +258,12 @@ data provided in advance.
 pwd
 ~~~
 {: .source}
+
+~~~
+
+~~~
+{: .output}
+~~~
 
 Now type `mkdir firstdir` and hit enter. This used the `mkdir` command (meaning 'make directories') to create a directory named 'firstdir'. Then move into that directory using the `cd` command.
 
@@ -379,12 +393,13 @@ appears before your cursor. You can continue pressing the up arrow to cycle
 through your previous commands. The down arrow cycles back toward your most recent command. 
 This is another important labour-saving function and something we'll use a lot.
 
-**Tip:** use the `history` command to see a list of all the commands 
+Use the `history` command to see a list of all the commands 
 you've entered during the current session. You can also use `Ctrl + r` to do 
 a reverse lookup. Hit `Ctrl + r`, then start typing any part of the command you're 
 looking for. The past command will autocomplete. Hit `enter` to run the command again, 
 or press the arrow keys to start editing the command. If you can't find what you're 
 looking for in the reverse lookup, use `Ctrl + c` to return to the prompt.
+{: .callout}
 
 > ## Duplicating a file
 >After having read and renamed several files, you may wish to bring their text 
