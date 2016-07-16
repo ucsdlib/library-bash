@@ -665,8 +665,10 @@ pwd
 ~~~
 
 ~~~
-{: .output}
+/Users/riley
 ~~~
+{: .output}
+
 
 Now type `mkdir firstdir` and hit enter. This used the `mkdir` command (meaning 'make directories') to create a directory named 'firstdir'. Then move into that directory using the `cd` command.
 
@@ -681,19 +683,21 @@ To navigate to the `firstdir` directory you could type `cd firstdir`.
 Alternatively, you could type `cd f` and then hit tab
 You will notice that the interface completes the line to `cd firstdir`. 
 
-**Hitting tab at any time within the shell will prompt it to attempt to auto-complete
-the line based on the files or sub-directories in the current directory. 
-Where two or more files have the same characters, the auto-complete will only fill up to the 
-first point of difference, after which you can add more characters, and 
-try using tab again. We would encourage using this method throughout 
-today to see how it behaves (as it saves loads of time and effort!).**
+> ## Tab for Auto-complete
+>Hitting tab at any time within the shell will prompt it to attempt to auto-complete
+>the line based on the files or sub-directories in the current directory. 
+>Where two or more files have the same characters, the auto-complete will only fill up to the 
+>first point of difference, after which you can add more characters, and 
+>try using tab again. We would encourage using this method throughout 
+>today to see how it behaves (as it saves loads of time and effort!).
+{: .callout}
 
 The next step is to manipulate files.
 
-Navigate to the `text` directory in the pre-circulated data directory. 
+Navigate to the `shell-data` directory in the pre-circulated data directory. 
 
 ~~~
-cd text
+cd shell-data
 ~~~
 {: .source}
 
@@ -706,7 +710,14 @@ ls -lh
 {: .source}
 
 ~~~
-TODO output
+total 92040
+-rwxr-xr-x  1 riley  staff   3.6M Jul 16 11:50 2014-01-31_JA-africa.tsv
+-rwxr-xr-x  1 riley  staff   7.4M Jul 16 11:50 2014-01-31_JA-america.tsv
+-rw-r--r--  1 riley  staff    30M Jul 16 12:54 2014-01_JA.tsv.zip
+-rwxr-xr-x  1 riley  staff   1.8M Jul 16 11:50 2014-02-01_JA-art .tsv
+-rwxr-xr-x  1 riley  staff   1.4M Jul 16 11:50 2014-02-02_JA-britain.tsv
+-rwxr-xr-x  1 riley  staff   598K Jul 16 11:50 829-0.txt
+-rwxr-xr-x  1 riley  staff    13B Jul 16 11:50 gallic.txt
 ~~~
 {: .output}
 
@@ -723,7 +734,9 @@ The terminal window erupts and *Gulliver's Travels* cascades by: this is what is
 And it is great, in theory, but you can't really make any sense of that amount of text. 
 Instead, you may want to just look at the first or the last bit of the file. 
 
-**TIP: to cancel this print of `829-0.txt`, or indeed any ongoing in the Unix shell, hit `ctrl+c`**
+>Canceling Commands
+>To cancel this print of `829-0.txt`, or indeed any ongoing in the Unix shell, hit `ctrl+c`**
+{: .source}
 
 Type `head 829-0.txt` and hit enter. 
 
@@ -733,7 +746,13 @@ head 829-0.txt
 {: .source}
 
 ~~~
-TODO output
+The Project Gutenberg eBook, Gulliver's Travels, by Jonathan Swift
+
+
+This eBook is for the use of anyone anywhere at no cost and with
+almost no restrictions whatsoever.  You may copy it, give it away or
+re-use it under the terms of the Project Gutenberg License included
+with this eBook or online at www.gutenberg.org
 ~~~
 {: .output}
 
@@ -742,7 +761,7 @@ This provides a view of the first ten lines,
 whereas `tail 829-0.txt` provides a perspective on the last ten lines. 
 This is a good way to quickly determine the contents of the file.
 ~~~
-tail 820-0.txt
+tail 829-0.txt
 ~~~
 {: .source}
 
@@ -757,8 +776,9 @@ Type `less 829-0.txt` to see the first screen, `spacebar` to see the
 next screen and so on, then `q` to quit (return to the command prompt).
 
 ~~~
-less 820-0.txt
+less 829-0.txt
 ~~~
+{: .bash}
 
 You may also want to change the file name to something more descriptive. 
 You can **move** it to a new name by using the `mv` or move command. 
@@ -772,12 +792,14 @@ mv 829-0.txt gulliver.txt
 Afterwards, when you perform a `ls` command, you will see that it is now `gulliver.txt`.
 
 ~~~
-ls gulliver.txt
+ls 
 ~~~
 {: .source}
 
 ~~~
-TODO output
+2014-01-31_JA-africa.tsv    2014-02-01_JA-art .tsv      gulliver.txt
+2014-01-31_JA-america.tsv   2014-02-02_JA-britain.tsv
+2014-01_JA.tsv.zip      gallic.txt
 ~~~
 {: .output}
 
@@ -796,12 +818,13 @@ appears before your cursor. You can continue pressing the up arrow to cycle
 through your previous commands. The down arrow cycles back toward your most recent command. 
 This is another important labour-saving function and something we'll use a lot.
 
-Use the `history` command to see a list of all the commands 
-you've entered during the current session. You can also use `Ctrl + r` to do 
-a reverse lookup. Hit `Ctrl + r`, then start typing any part of the command you're 
-looking for. The past command will autocomplete. Hit `enter` to run the command again, 
-or press the arrow keys to start editing the command. If you can't find what you're 
-looking for in the reverse lookup, use `Ctrl + c` to return to the prompt.
+> ## Using `history`
+>Use the `history` command to see a list of all the commands 
+>you've entered during the current session. You can also use `Ctrl + r` to do 
+>a reverse lookup. Hit `Ctrl + r`, then start typing any part of the command you're 
+>looking for. The past command will autocomplete. Hit `enter` to run the command again, 
+>or press the arrow keys to start editing the command. If you can't find what you're 
+>looking for in the reverse lookup, use `Ctrl + c` to return to the prompt.
 {: .callout}
 
 > ## Duplicating a file
@@ -821,7 +844,7 @@ Good, now that you have two copies of *Gulliver's Travels*,
 let's put them together to make an **even longer** book. 
 
 To combine, or concatenate, two or more files use the `cat` command 
-again. Type `cat gulliver.txt gulliver-backup.txt` and press enter. 
+again. 
 
 ~~~
 cat gulliver.txt gulliver-backup.txt
@@ -848,7 +871,9 @@ ls
 {: .source}
 
 ~~~
-TODO output
+2014-01-31_JA-africa.tsv    2014-02-01_JA-art .tsv      gulliver-backup.txt
+2014-01-31_JA-america.tsv   2014-02-02_JA-britain.tsv   gulliver-twice.txt
+2014-01_JA.tsv.zip      gallic.txt          gulliver.txt
 ~~~
 {: .output}
 
