@@ -50,6 +50,45 @@ less -N gulliver.txt
 ~~~
 {: .bash}
 
+~~~
+  1 <U+FEFF>The Project Gutenberg eBook, Gulliver's Travels, by Jonatha      1 n Swift
+      2 
+      3 
+      4 This eBook is for the use of anyone anywhere at no cost and with
+      5 almost no restrictions whatsoever.  You may copy it, give it away o      5 r
+      6 re-use it under the terms of the Project Gutenberg License included
+      7 with this eBook or online at www.gutenberg.org
+      8 
+      9 
+     10 
+     11 
+     12 
+     13 Title: Gulliver's Travels
+     14        into several remote nations of the world
+     15 
+     16 
+     17 Author: Jonathan Swift
+     18 
+     19 
+     20 
+     21 Release Date: June 15, 2009  [eBook #829]
+     22 
+     23 Language: English
+     24 
+     25 Character set encoding: UTF-8
+     26 
+     27 
+     28 ***START OF THE PROJECT GUTENBERG EBOOK GULLIVER'S TRAVELS***
+     29 
+     30 
+     31 Transcribed from the 1892 George Bell and Sons edition by David Pri     31 ce,
+     32 email ccx074@pglaf.org
+     33 
+     34 
+     35 
+~~~
+{: .output}
+
 We're going to start by using the `sed` command. The command allows you to edit files directly.
 
 ~~~
