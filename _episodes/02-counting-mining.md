@@ -54,13 +54,20 @@ ls -lh
 ~~~
 {: .bash}
 
-The file in this directory is a zipped up version of the dataset `2014-01_JA.tsv` that contains journal article metadata.
+~~~
+total 90120
+-rwxr-xr-x  1 riley  staff   3.6M Jul 17 14:33 2014-01-31_JA-africa.tsv
+-rwxr-xr-x  1 riley  staff   7.4M Jul 17 14:33 2014-01-31_JA-america.tsv
+-rw-r--r--  1 riley  staff    29M Jul 17 14:33 2014-01_JA.tsv.zip
+-rwxr-xr-x  1 riley  staff   1.8M Jul 17 14:33 2014-02-01_JA-art .tsv
+-rwxr-xr-x  1 riley  staff   1.4M Jul 17 14:33 2014-02-02_JA-britain.tsv
+-rwxr-xr-x  1 riley  staff    13B Jul 17 14:33 gallic.txt
+-rwxr-xr-x  1 riley  staff   598K Jul 17 14:33 gulliver.txt
+~~~
+{: .output}
 
-The data directory contains a single text file 
-(to which we shall return) and four .tsv files derived from `2014-01_JA.tsv`. 
-Each of these four includes all data where a keyword such as `africa` or `america` 
-appears in the 'Title' field of `2014-01_JA.tsv`. The `derived_data` directory 
-also includes a subdirectory called `results`.
+The data directory contains a zipped up version of the dataset `2014-01_JA.tsv` that contains journal article metadata, four .tsv files derived from `2014-01_JA.tsv`, the gulliver.txt file we created in episode 1, and a gallic.txt file we'll talk about later. Each of these four .tsv files includes all data where a keyword such as `africa` or `america` 
+appears in the 'Title' field of `2014-01_JA.tsv`. Before we start, please unzip the `2014-01_JA.tsv.zip` file into it's containing directory (`data/`). 
 
 > ## TSV Files
 >TSV files are those in which within each row the units of data 
@@ -72,16 +79,9 @@ also includes a subdirectory called `results`.
 >such as Libre Office Calc or Microsoft Excel.*
 {: .callout}
 
-Before you begin working with these files, make sure you are in the shell-data folder. 
+From within the `data/` directory, we can count the contents of the files.
 
-~~~
-pwd
-~~~
-{: .bash}
-
-Now that you are here you can count the contents of the files.
-
-The Unix command for counting is `wc`. Type and hit enter. The flag `-w` combined with `wc` instructs the computer to print a word count, and the name of the file that has been counted, into the shell.
+The Unix command for counting is `wc`. The flag `-w` combined with `wc` instructs the computer to print a word count, and the name of the file that has been counted, into the shell.
 
 ~~~~
 wc -w 2014-01-31_JA-africa.tsv 
@@ -98,7 +98,6 @@ the most out of the Unix shell as they give you better control over commands.
 
 If your reader request or piece of work is more concerned number of entries (or lines) 
 than the number of words, you can use the line count flag. 
-Type
 
 ~~~
 wc -l 2014-01-31_JA-africa.tsv
@@ -110,7 +109,7 @@ wc -l 2014-01-31_JA-africa.tsv
 ~~~
 {: .output}
 
-and hit enter. Combined with `wc` the flag `-l` prints a line count and the name of the file that has been counted.
+Combined with `wc` the flag `-l` prints a line count and the name of the file that has been counted.
 
 Finally, type
 
@@ -135,23 +134,26 @@ counts per page of a book, the distribution of characters per page across
 a collection of newspapers, the average line lengths used by poets. 
 You can also use `wc` with a combination of wildcards and flags to build more complex queries.
 
-Can you guess what the line `wc -l 2014-01-31_JA-a*.tsv` will do? 
-
-~~~
-wc -l 2014-01-31_JA-a*.tsv
-~~~
-{: .bash}
-
-~~~
-13712 2014-01-31_JA-africa.tsv
-27392 2014-01-31_JA-america.tsv
-41104 total
-~~~
+> ## WC on Multiple Files
+>Can you guess what the line `wc -l 2014-01-31_JA-a*.tsv` will do? 
+>
+>~~~
+>wc -l 2014-01-31_JA-a*.tsv
+>~~~
+>{: .bash}
+>> ## Solution
+>>~~~
+>>13712 2014-01-31_JA-africa.tsv
+>>27392 2014-01-31_JA-america.tsv
+>>41104 total
+>>~~~
+>>This prints the line counts for `2014-01-31_JA-africa.tsv` 
+>>and `2014-01-31_JA-america.tsv`, offering a simple means of comparing 
+>>these two sets of research data.
+>{: .solution}
 {: .output}
 
-Correct! This prints the line counts for `2014-01-31_JA-africa.tsv` 
-and `2014-01-31_JA-america.tsv`, offering a simple means of comparing 
-these two sets of research data. Of course, it may be faster if you 
+Of course, it may be faster if you 
 only have a handful of files to compare the line count for the two 
 documents in Libre Office Calc, Microsoft Excel, or a similar spreadsheet 
 program. But when wishing to compare the line count for tens, hundreds, or 
@@ -161,15 +163,44 @@ Moreover, as our datasets increase in size you can use the Unix
 shell to do more than copy these line counts by hand, by the use of 
 print screen, or by copy and paste methods. Using the `>` redirect 
 operator we saw earlier you can export our query results to a new file. 
-Type `wc -l 2014-01-31_JA-a*.tsv > results/DATE_JA-a-wc.txt` (or 
-something like that, the last bit after `results/` could be anything!) and 
-hit enter. 
 
 ~~~
 wc -l 2014-01-31_JA-a*.tsv > results/2016-07-19_JA-a-wc.txt
 ~~~
 {: .bash}
 
+~~~
+-bash: results/2016-07-19_JA-a-wc.txt: No such file or directory
+~~~
+{: .error}
+
+Here we've received a bash error message letting us know that there isn't a `results/` directory to save our new file in. Let's remedy this by creating that directory. 
+
+~~~
+mkdir results
+~~~
+{: .bash}
+
+~~~
+ls -F
+~~~
+{: .bash}
+
+~~~
+2014-01-31_JA-africa.tsv*	2014-02-02_JA-britain.tsv*
+2014-01-31_JA-america.tsv*	gallic.txt*
+2014-01_JA.tsv			gulliver.txt*
+2014-01_JA.tsv.zip		results/
+2014-02-01_JA-art .tsv*
+~~~
+{: .output}
+
+Ok, once the `results/` directory exists, we can try our `wc` to a file command again. 
+
+~~~
+wc -l 2014-01-31_JA-a*.tsv > results/2016-07-19_JA-a-wc.txt
+~~~
+{: .bash}
 
 This runs the same query as before, but rather than print the 
 results within the Unix shell it saves the results as `DATE_JA_a-wc.txt`. 
@@ -183,13 +214,25 @@ ls
 ~~~
 {: .bash}
 
+~~~
+2016-07-19_JA-a-wc.txt
+~~~
+{: . output}
+
 To see the file contents in the shell (as it 
 is 10 lines or fewer in length, all the file contents will be shown here): 
 
 ~~~
-head DATE_JA-a-wc.txt
+head 2016-07-19_JA-a-wc.txt
 ~~~
 {: .bash}
+
+~~~
+   13712 2014-01-31_JA-africa.tsv
+   27392 2014-01-31_JA-america.tsv
+   41104 total
+~~~
+{: .output}
 
 ## Mining
 
@@ -204,9 +247,7 @@ multiple files and then export that data to a new file. The only limitations
 here are your imagination, the shape of your data, and - when working with 
 thousands or millions of files - the processing power at your disposal.
 
-To begin using `grep`, first navigate to the `shell-data` directory (from results/ type `cd ..`). 
-
-Here type `grep 1999 *.tsv` and hit enter. 
+To begin using `grep`, first navigate to the `data` directory (from results/ type `cd ..`). 
 
 ~~~
 grep 1999 *.tsv
@@ -223,6 +264,15 @@ grep -c 1999 *.tsv
 ~~~
 {: .bash}
 
+~~~
+2014-01-31_JA-africa.tsv:804
+2014-01-31_JA-america.tsv:1478
+2014-01_JA.tsv:28767
+2014-02-01_JA-art .tsv:407
+2014-02-02_JA-britain.tsv:284
+~~~
+{: .output}
+
 The shell now prints the number of times the string 1999 appeared in each `*.tsv file`. 
 If you look at the output from the previous command, this tends to be refer to the 
 date field for each journal article.
@@ -234,15 +284,33 @@ grep -c revolution *.tsv
 ~~~
 {: .bash}
 
+
+~~~
+2014-01-31_JA-africa.tsv:20
+2014-01-31_JA-america.tsv:34
+2014-01_JA.tsv:867
+2014-02-01_JA-art .tsv:11
+2014-02-02_JA-britain.tsv:9
+~~~
+{: .output}
+
 Counts 
 the instances of the string `revolution` within the defined files and prints 
-those counts to the shell. Run this, observe the output, and then amend it 
-to: 
+those counts to the shell. Now, amend the above command to the below and observer how the outpu of each is different: 
 
 ~~~
 grep -ci revolution *.tsv
 ~~~
 {: .bash}
+
+~~~
+2014-01-31_JA-africa.tsv:118
+2014-01-31_JA-america.tsv:1018
+2014-01_JA.tsv:9327
+2014-02-01_JA-art .tsv:110
+2014-02-02_JA-britain.tsv:122
+~~~
+{: .output}
 
 This repeats the query, but prints a case 
 insensitive count (including instances of both `revolution` and `Revolution`). 
@@ -253,24 +321,22 @@ adding `> results/`, followed by a filename (ideally in .txt format), will save 
 So far we have counted strings in file and printed to the shell or to 
 file those counts. But the real power of `grep` comes in that you can 
 also use it to create subsets of tabulated data (or indeed any data) 
-from one or multiple files. Type: 
+from one or multiple files.  
 
 ~~~
 grep -i revolution *.tsv
 ~~~
 {: .bash}
 
-and hit enter. 
-
 This script looks in the defined files and prints any lines containing `revolution` 
 (without regard to case) to the shell. 
 
 ~~~
-grep -i revolution *.tsv > results/DATE_JAi-revolution.tsv
+grep -i revolution *.tsv > results/2016-07-19_JAi-revolution.tsv
 ~~~
 {: .bash}
 
-saves it to file.
+This saves the subsetted data to file.
 
 However if we look at this file, it contains every instance of the 
 string 'revolution' including as a single word and as part of other words 
@@ -278,23 +344,29 @@ such as 'revolutionary'. This perhaps isn't as useful as we thought...
 Thankfully, the `-w` flag instructs `grep` to look for whole words only, 
 giving us greater precision in our search. 
 
-Type:
-
 ~~~
 grep -iw revolution *.tsv > results/DATE_JAiw-revolution.tsv
 ~~~
 {: .bash} 
 
-and hit enter. This script looks in both of the defined files and
+This script looks in both of the defined files and
 exports any lines containing the whole word `revolution` (without regard to case) 
 to the specified .tsv file. 
 
+We can show the difference between the files we created.
+
 ~~~
-wc -l *revolution
+wc -l results/*.tsv
 ~~~
 {: .bash}
 
-shows us the difference between them.
+~~~
+   10695 2016-07-19_JAi-revolution.tsv
+    7859 2016-07-19_JAw-revolution.tsv
+   18554 total
+~~~
+{: .output}
+
 
 Finally, you can use the **regular expression syntax** covered earlier to search for similar words. 
 
@@ -305,14 +377,20 @@ cat gallic.txt
 ~~~
 {: .bash}
 
+~~~
+fr[ae]nc[eh]
+~~~
+{: .output}
+
 The square brackets here ask the machine to match any character 
-in the range specified. So when used with grep as
+in the range specified. So when used with grep ...
+
 ~~~
 grep -iw --file=gallic.txt *.tsv
 ~~~
 {: .bash}
 
-the shell will print out each line containing the string:
+... the shell will print out each line containing the string:
 
 ~~~
 - france
@@ -325,9 +403,18 @@ the shell will print out each line containing the string:
 Include the `-o` flag to print only the matching part of the lines e.g. (handy for isolating/checking results).
 
 ~~~
-grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv
+grep -iwo revolution *.tsv
 ~~~
 {: .bash}
+
+OR: 
+
+~~~
+grep -iwo --file=gallic.txt *.tsv
+~~~
+{: .bash}
+
+Pair up with your neighbor and work on these exercies: 
 
 >## Case sensitive search
 >Search for all case sensitive instances of 
@@ -403,7 +490,7 @@ grep -iwo revolution *.tsv` or `grep -iwo --file=gallic.txt *.tsv
 >{: .solution}
 {: .challenge}
 
-Compare the line counts of the last two files.
+Compare the line counts of the last two files you created.
 
 ~~~
 wc -l FILENAMES
