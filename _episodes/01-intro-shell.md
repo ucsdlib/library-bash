@@ -189,8 +189,6 @@ ls -lh
 {: .bash}
 
 ~~~
-
-~~~
 total 0
 drwx------+  6 riley  staff   204B Jul 16 11:50 Desktop
 drwx------+  3 riley  staff   102B Jul 16 11:30 Documents
@@ -213,7 +211,7 @@ For Linux users like me, it does, and I believe that is the same for Mac people)
 To double check, type `pwd` and you should see something that represents your desktop.
 
 ~~~
-cd desktop
+cd Desktop
 ~~~
 {: .bash}
 
@@ -224,9 +222,9 @@ This moves us 'up' one directory, putting us back where we started.
 If you ever get completely lost, the command `cd --` (or `cd ~` or even just `cd`) will bring 
 you right back to the home directory, right where you started.
 
-> ## Switching Back to Previous Directory
+> ## Previous Directory
 >To switch back and forth between two directories use `cd -`.
->{: .callout}
+{: .callout}
 
 Try exploring: move around the computer, get used to moving in and out of directories, 
 see how different file types appear in the Unix shell. 
@@ -663,8 +661,6 @@ pwd
 {: .bash}
 
 ~~~
-
-~~~
 /Users/riley
 ~~~
 {: .output}
@@ -678,7 +674,13 @@ cd firstdir
 ~~~
 {: .bash}
 
-But wait! There's a trick to make things a bit quicker. Go up one directory (`cd ..`). 
+But wait! There's a trick to make things a bit quicker. Go up one directory.
+
+~~~
+cd ..
+~~~
+{: .bash}
+
 To navigate to the `firstdir` directory you could type `cd firstdir`. 
 Alternatively, you could type `cd f` and then hit tab
 You will notice that the interface completes the line to `cd firstdir`. 
@@ -694,15 +696,15 @@ You will notice that the interface completes the line to `cd firstdir`.
 
 The next step is to manipulate files.
 
-Navigate to the `shell-data` directory in the pre-circulated data directory. 
+Navigate to the `data` directory in the pre-circulated data directory. 
 
 ~~~
-cd shell-data
+cd data
 ~~~
 {: .bash}
 
 In here there is a copy of Jonathan Swift's *Gulliver's Travels* downloaded from 
-Project Gutenberg. type `ls -lh` and hit enter to see details of this file.
+Project Gutenberg along with other files we will cover later. Type `ls -lh` and hit enter to see details of this file.
 
 ~~~
 ls -lh
@@ -722,7 +724,7 @@ total 92040
 {: .output}
 
 
-You can read the text right here. To try this, type `cat 829-0.txt`. 
+The file we are interested in is `820-0.txt`, which corresponds to eBook #829 on Project Gutenberg and is the book *Gulliver's Travels*. You can read the text on the command line by using the `cat` command. 
 
 ~~~
 cat 820-0.txt
@@ -732,13 +734,12 @@ cat 820-0.txt
 
 The terminal window erupts and *Gulliver's Travels* cascades by: this is what is known as printing to the shell. 
 And it is great, in theory, but you can't really make any sense of that amount of text. 
+
+> ## Canceling Commands
+>To cancel this print of `829-0.txt`, or indeed any ongoing processes in the Unix shell, hit `ctrl+c`
+{: .callout}
+
 Instead, you may want to just look at the first or the last bit of the file. 
-
->Canceling Commands
->To cancel this print of `829-0.txt`, or indeed any ongoing in the Unix shell, hit `ctrl+c`**
-{: .bash}
-
-Type `head 829-0.txt` and hit enter. 
 
 ~~~
 head 829-0.txt
@@ -767,7 +768,14 @@ tail 829-0.txt
 {: .bash}
 
 ~~~
-TODO output
+Most people start at our Web site which has the main PG search facility:
+
+     http://www.gutenberg.org
+
+This Web site includes information about Project Gutenberg-tm,
+including how to make donations to the Project Gutenberg Literary
+Archive Foundation, how to help produce our new eBooks, and how to
+subscribe to our email newsletter to hear about new eBooks.
 ~~~
 {: .output}
 
@@ -783,12 +791,13 @@ less 829-0.txt
 
 You may also want to change the file name to something more descriptive. 
 You can **move** it to a new name by using the `mv` or move command. 
-To do this type `mv 829-0.txt gulliver.txt` and hit enter. This is equivalent to the 'rename file' function.
 
 ~~~
 mv 829-0.txt gulliver.txt
 ~~~
 {: .bash}
+
+This is equivalent to the 'rename file' function.
 
 Afterwards, when you perform a `ls` command, you will see that it is now `gulliver.txt`.
 
@@ -805,13 +814,14 @@ ls
 {: .output}
 
 
-Had you wanted to duplicate it, you could have used the `cp` or copy command by typing `cp 829-0.txt gulliver.txt`
-That would have created a a new file with the title `gulliver.txt` while leaving the original file `829-0.txt` intact.
+Had you wanted to duplicate it, you could have used the `cp` or copy command.
 
 ~~~
 cp 829-0.txt gulliver.txt
 ~~~
-{: .output}
+{: .bash}
+
+That would have created a a new file with the title `gulliver.txt` while leaving the original file `829-0.txt` intact.
 
 Now that you have seen and used several new commands, it's time for another trick. 
 Hit the up arrow twice on your keyboard. Notice that `mv 829-0.txt gulliver.txt` 
@@ -829,8 +839,7 @@ This is another important labour-saving function and something we'll use a lot.
 {: .callout}
 
 > ## Duplicating a file
->After having read and renamed several files, you may wish to bring their text 
->together into one file. Before we do that, let's use `cp` to duplicate the Gulliver 
+>Use `cp` to duplicate the Gulliver 
 >file and give it the filename `gulliver-backup.txt`: any ideas how you do that? 
 >
 >> ## Answer 
@@ -841,11 +850,10 @@ This is another important labour-saving function and something we'll use a lot.
 >{: .solution}
 {: .challenge}
 
-Good, now that you have two copies of *Gulliver's Travels*, 
+After having read and renamed several files, you may wish to bring their text together into one file. Let's
 let's put them together to make an **even longer** book. 
 
-To combine, or concatenate, two or more files use the `cat` command 
-again. 
+To combine, or concatenate, two or more files use the `cat` command again. 
 
 ~~~
 cat gulliver.txt gulliver-backup.txt
@@ -864,7 +872,7 @@ cat gulliver.txt gulliver-backup.txt > gulliver-twice.txt
 ~~~
 {: .bash}
 
-and hit enter. Now, when you type `ls` you'll see `gulliver-twice.txt` appear in your directory.
+Now, when you type `ls` you'll see `gulliver-twice.txt` appear in your directory.
 
 ~~~
 ls
@@ -897,7 +905,7 @@ a text analysis program.
 
 Another wildcard worth remembering is `?` which is a place holder 
 for a single character or number. We shall return to shell wildcards later - for 
-now, note again that they are similar to but not excatly the same as the Regex we saw in the previous module.
+now, note again that they are similar to but not excatly the same as the Regex we saw in the previous episode.
 
 Finally, onto deleting. We won't use it now, but if you do want to delete a file, 
 for whatever reason, the command is `rm`, or remove. 
@@ -911,7 +919,7 @@ The syntax for `rm` is the same as `cp` and `mv`:
 for example:  
 
 ~~~
-rm gulliver.txt
+rm gulliver-twice.txt
 ~~~
 {: .bash}
  
