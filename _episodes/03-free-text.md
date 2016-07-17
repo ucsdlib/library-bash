@@ -37,22 +37,20 @@ I've left some of the figuring out to do to you - so please refer to your notes 
 Head to:
 
 ~~~
-cd ../text/
+cd data
 ~~~
 {: .bash}
 
 We're going to work again with the `gulliver.txt` file we saw earlier.
 
-SHOW THE FILE:
+Let's look at the file. 
 
 ~~~
-less -N gulliver.txt`**
+less -N gulliver.txt
 ~~~
 {: .bash}
 
 We're going to start by using the `sed` command. The command allows you to edit files directly.
-
-Type and run:
 
 ~~~
 sed '9352,9714d' gulliver.txt > gulliver-nofoot.txt 
@@ -64,8 +62,6 @@ The command `sed` in combination with the `d`
 value will look at `gulliver.txt` and delete all 
 values between the rows specified. The `>` action then 
 prompts the script to this edited text to the new file specified.
-
-Now type and run: 
 
 ~~~
 sed '1,37d' gulliver-nofoot.txt > gulliver-noheadfoot.txt
@@ -89,15 +85,17 @@ This uses the translate command and a special syntax to remove all punctuation.
 It also requires the use of both the output redirect `>` we have seen and the input redirect `<` we haven't seen. 
 
 Finally regularise the text by removing all the uppercase lettering. 
-Type `tr [:upper:] [:lower:] < gulliver-noheadfootpunct.txt > gulliver-clean.txt` and hit enter.
+
+~~~
+tr [:upper:] [:lower:] < gulliver-noheadfootpunct.txt > gulliver-clean.txt
+~~~
+{: .bash}
 
 Open the `gulliver-clean.txt` in a text editor. Note how the text has been transformed ready for analysis.
 
 ## Pulling a text apart, counting word frequencies
 
 We are now ready to pull the text apart.
-
-Type and run: 
 
 ~~~
 tr ' ' '\n' < gulliver-clean.txt > gulliver-linebyline.txt
@@ -131,7 +129,13 @@ This script uses `uniq`, another new command, in combination
 with the `-c` flag to both remove duplicate lines and produce a word count of those duplicates.
 
 **Note: there is a windows/linux issue here worth flagging 
-about special characters**
+about special characters** 
+
+Might need to use the below to remove windows line ending. 
+~~~
+tr -d '\r' < stmtn10-lowercase.txt > stmtn10-lowercaself.txt
+~~~
+{: .bash}
 
 Note that these steps can be simplified by building 'pipes'. So...
 
