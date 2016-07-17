@@ -27,10 +27,10 @@ The Unix shell can be used to quickly generate counts from across files,
 something that is tricky to achieve using the graphical user interfaces of standard office suites.
 
 In the Unix shell, use the `cd` command to navigate to the directory 
-that contains our data: the `shell-data` subdirectory of the `libcarp-data-notes` directory. 
+that contains our data. 
 
 ~~~
-cd shell-data
+cd data
 ~~~
 {: .bash}
 
@@ -42,6 +42,10 @@ pwd
 ~~~
 {: .bash}
 
+~~~
+/Users/riley/Desktop/data
+~~~
+{: .output}
 
 Type `ls -lh` and then hit enter. This prints, or displays, a list that includes a file and a subdirectory.
 
