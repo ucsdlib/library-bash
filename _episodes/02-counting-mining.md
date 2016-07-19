@@ -242,7 +242,7 @@ used to search across multiple files for specific strings of characters.
 It is able to do so much faster than the graphical search interface 
 offered by most operating systems or office suites. And combined with the `>` 
 operator, the `grep` command becomes a powerful research tool can be used 
-to mine your data for characteristics or word clusters that appear across 
+to mine your data for characteristics or word clusters that appear in 
 multiple files and then export that data to a new file. The only limitations 
 here are your imagination, the shape of your data, and - when working with 
 thousands or millions of files - the processing power at your disposal.
@@ -449,7 +449,7 @@ Pair up with your neighbor and work on these exercies:
 >
 >>## Solution
 >>~~~
->>grep -c hero 2014-01-31
+>>grep -c hero *a.tsv
 >>~~~
 >>{: .bash}
 >{: .solution}
@@ -482,6 +482,7 @@ Pair up with your neighbor and work on these exercies:
 >## Case insensitive search 3
 >Search for all case insensitive instances of that whole word 
 >in the 'America' and 'Africa' tsv files in this directory. Print your results to a new .tsv    >file.
+>
 >>## Solution
 >>~~~
 >>grep -iw hero *a.tsv > new2.tsv
