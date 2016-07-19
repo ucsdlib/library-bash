@@ -429,14 +429,14 @@ Pair up with your neighbor and work on these exercies:
 >{: .solution}
 {: .challenge}
 
-> ## Case sensitive search 2
+>## Case sensitive search 2
 >Search for all case sensitive instances of a word you choose in 
 >the 'America' and 'Africa' tsv files in this directory. 
 >Print your results to the shell.
 >
 >>## Solution
 >>~~~
->>grep hero 2014-01-31
+>>grep hero *a.tsv
 >>~~~
 >>{: .bash}
 >{: .solution}
@@ -447,7 +447,7 @@ Pair up with your neighbor and work on these exercies:
 >the 'America' and 'Africa' tsv files in this directory. 
 >Print your results to the shell.
 >
->># Solution
+>>## Solution
 >>~~~
 >>grep -c hero 2014-01-31
 >>~~~
@@ -459,9 +459,9 @@ Pair up with your neighbor and work on these exercies:
 >Count all case insensitive instances of that word in the 'America' and 'Africa' tsv files 
 >in this directory. Print your results to the shell.
 >
->>##Solution
+>>## Solution
 >>~~~
->>grep -ci hero 2014-01-31
+>>grep -ci hero *a.tsv
 >>~~~
 >>{: .bash}
 >{: .solution}
@@ -471,9 +471,9 @@ Pair up with your neighbor and work on these exercies:
 >Search for all case insensitive instances of that 
 >word in the 'America' and 'Africa' tsv files in this directory. Print your results to a new >.tsv file. 
 >
->> ## Solution
+>>## Solution
 >>~~~
->>grep -i hero 2014-01-31* > new.tsv
+>>grep -i hero *a.tsv > new.tsv
 >>~~~
 >>{: .bash}
 >{: .solution}
@@ -482,9 +482,9 @@ Pair up with your neighbor and work on these exercies:
 >## Case insensitive search 3
 >Search for all case insensitive instances of that whole word 
 >in the 'America' and 'Africa' tsv files in this directory. Print your results to a new .tsv    >file.
->> ## Solution
+>>## Solution
 >>~~~
->>grep -iw hero 2014-01-31* > new2.tsv
+>>grep -iw hero *a.tsv > new2.tsv
 >>~~~
 >>{: .bash}
 >{: .solution}
