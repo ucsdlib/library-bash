@@ -423,7 +423,7 @@ Pair up with your neighbor and work on these exercies:
 >
 >>## Solution
 >>~~~
->>grep hero *.tsv`
+>>grep hero *.tsv
 >>~~~
 >>{: .bash}
 >{: .solution}
@@ -436,7 +436,7 @@ Pair up with your neighbor and work on these exercies:
 >
 >>## Solution
 >>~~~
->>grep hero 2014-01-31*`
+>>grep hero 2014-01-31
 >>~~~
 >>{: .bash}
 >{: .solution}
@@ -449,7 +449,7 @@ Pair up with your neighbor and work on these exercies:
 >
 >># Solution
 >>~~~
->>grep -c hero 2014-01-31*
+>>grep -c hero 2014-01-31
 >>~~~
 >>{: .bash}
 >{: .solution}
@@ -461,7 +461,7 @@ Pair up with your neighbor and work on these exercies:
 >
 >>##Solution
 >>~~~
->>grep -ci hero 2014-01-31*`
+>>grep -ci hero 2014-01-31
 >>~~~
 >>{: .bash}
 >{: .solution}

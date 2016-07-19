@@ -232,25 +232,38 @@ The second lesson you did today was based on a lesson Bill has on [his website](
 
 ## NER Demo
 
-Although Named Entity Recognition relies on a number of processes we need to 
+Although [Named Entity Recognition](https://en.wikipedia.org/wiki/Named-entity_recognition) relies on a number of processes we need to 
 critique, it can be run across texts quickly and simply from the command line. 
-We start by setting the named entity recognition running on a txt (here on a text with punctuation removed)
+We start by setting the named entity recognition running on a txt (here on a text with punctuation removed). Check out this website for how the below was put together: https://williamjturkel.net/2013/06/30/named-entity-recognition-with-command-line-tools-in-linux/
 
-`stanford-ner/ner.sh gulliver-noheadfootpunct.txt > gulliver_ner.txt`
+~~~
+stanford-ner/ner.sh gulliver-noheadfootpunct.txt > gulliver_ner.txt
+~~~
+{: .bash}
 
 Looking at the text now, we can see that the NER has tagged some 
 words with what it thinks are people, places, et al. We then clean up loose tags.
 
-`sed 's/\/O / /g' < gulliver_ner.txt > gulliver_ner-clean.txt`
+~~~
+sed 's/\/O / /g' < gulliver_ner.txt > gulliver_ner-clean.txt`
+~~~
+{: .bash}
 
 From which we can count persons...
 
-`egrep -o -f personpattr gulliver_ner-clean.txt | sed 's/\/PERSON//g' | sort | uniq -c | sort -nr > gulliver_ner-pers-freq.txt` 
+~~~
+egrep -o -f personpattr gulliver_ner-clean.txt | sed 's/\/PERSON//g' | sort | uniq -c | sort -nr > gulliver_ner-pers-freq.txt
+~~~
+{: .bash}
+
 *note: `egrep` is merely a variant of grep that looks for patterns*
 
 And count places....
 
-`egrep -o -f locpattr gulliver_ner-clean.txt | sed 's/\/LOCATION//g' | sort | uniq -c | sort -nr > gulliver_ner-loc-freq.txt`
+~~~
+egrep -o -f locpattr gulliver_ner-clean.txt | sed 's/\/LOCATION//g' | sort | uniq -c | sort -nr > gulliver_ner-loc-freq.txt
+~~~
+{: .bash}
 
 Now the results of this are up for debate. Many persons seem to me to be missing, 
 suggesting the applicability of the software for this purpose may be questionable. 
